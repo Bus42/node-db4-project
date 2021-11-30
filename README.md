@@ -55,6 +55,11 @@ Before writing any code, write out all desired tables in the data model and dete
 
 **Try to keep your design to FOUR tables**. With three tables it will be hard to meet all requirements, and more than 5 is likely overkill.
 
+- create recipes, steps, and ingredients tables
+recipes:      id (PK) | name (unique)   | created
+steps:        id (PK) | number (unique) | instructions (not null) | quantity | recipe_id (FK, not null)
+ingredients:  id (PK) | name (unique)
+
 #### Project Scaffolding
 
 - Put an Express application together starting with the `package.json` and a `knexfile.js`. Use existing projects as reference if needed.
