@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const recipesModel = require('./recipesModel');
+const { checkRecipeExists } = require('./recipesMiddleware');
 
 router.get('/', async (req, res) => {
     try {
@@ -11,7 +12,7 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', checkRecipeExists, async (req, res) => {
     try {
         const recipe = await recipesModel.getRecipeById(req.params.id);
         res.status(200).send(recipe);
